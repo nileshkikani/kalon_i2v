@@ -1,0 +1,246 @@
+{
+  "input": {
+    "workflow": {
+      "84": {
+        "inputs": {
+          "filename": "nsfw_wan_umt5-xxl_fp8_scaled.safetensors"
+        },
+        "class_type": "CLIPLoader",
+        "_meta": {
+          "title": "CLIPLoader"
+        }
+      },
+      "85": {
+        "inputs": {
+          "text": "disable",
+          "model": [
+            "103",
+            0
+          ],
+          "positive": [
+            "98",
+            0
+          ],
+          "negative": [
+            "98",
+            1
+          ],
+          "latent_image": [
+            "86",
+            0
+          ]
+        },
+        "class_type": "KSamplerAdvanced",
+        "_meta": {
+          "title": "KSamplerAdvanced"
+        }
+      },
+      "86": {
+        "inputs": {
+          "text": "enable",
+          "model": [
+            "104",
+            0
+          ],
+          "positive": [
+            "98",
+            0
+          ],
+          "negative": [
+            "98",
+            1
+          ],
+          "latent_image": [
+            "98",
+            2
+          ]
+        },
+        "class_type": "KSamplerAdvanced",
+        "_meta": {
+          "title": "KSamplerAdvanced"
+        }
+      },
+      "87": {
+        "inputs": {
+          "samples": [
+            "85",
+            0
+          ],
+          "vae": [
+            "90",
+            0
+          ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+          "title": "VAEDecode"
+        }
+      },
+      "89": {
+        "inputs": {
+          "text": "blurry, low resolution, pixelated, grainy, noisy, compression artifacts, glitch, heavy motion blur, oversharpened, bad anatomy proportions, deformed body mutated limbs extra limbs missing limbs, fused deformed hands fingers bad grip on hips, deformed penis curvature veins wrong size missing head, deformed vagina gaping unnatural shape prolapsed wrong, missing penis disappearing penis penis clipping floating outside pussy, penis not inside vagina shallow insertion no penetration, dry matte pussy no gloss no lube no wetness no juices bad physics floating disconnected fluids, clothes bra panties shirt dress stockings socks shoes lingerie any covering on woman or man, kitchen counter table bench furniture other than bed side table, pubic hair bush excessive, multiple extra people beyond man woman, deformed ugly asymmetrical face warp morph identity change inconsistent face body frame to frame, neutral bored calm expression eyes closed averted closed mouth no moaning no pleasure, plastic shiny doll fake skin look cartoon anime 3d render cgi low quality worst quality, text watermark logo signature speech bubble subtitles, bright daylight harsh overexposed cold lighting outdoor public cluttered sharp background, underexposed dark loss detail, fast unnatural frantic thrusting speed rapid clapping, sudden abrupt jerks pops changes insertion, low framerate choppy stuttering flickering unstable motion, oversaturated colors degradation, standing upright sitting pose missionary cowgirl other positions, cropped face only no full body view, camera moving zoom pan shake dynamic angles panning out, anal focus anus visible emphasis, no penetration no cock in pussy, no breasts jiggle static chest",
+          "clip": [
+            "84",
+            0
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIP Text Encode (Negative Prompt)"
+        }
+      },
+      "90": {
+        "inputs": {
+          "filename": "wan_2.1_vae.safetensors"
+        },
+        "class_type": "VAELoader",
+        "_meta": {
+          "title": "VAELoader"
+        }
+      },
+      "93": {
+        "inputs": {
+          "text": "photorealistic doggy style vaginal sex in ultra-realistic slow-to-moderate motion video, exact woman from uploaded reference image preserved 100% face identity body proportions anatomy skin pores texture subsurface scattering, completely nude full body visible in classic doggy style position, on all fours knees and hands on bed ass raised high back arched head forward or slightly turned, muscular man positioned directly behind her hands firmly gripping her hips for leverage thick veiny erect penis fully inserted deep inside wet tight pussy visible shaft stretching labia inner walls gripping realistically glistening juices coating cock dripping down inner thighs, detailed penetration anatomy labia stretch wetness fluids dripping skin slapping contact, aroused intense pleasure expression face fully in frame eyes half-lidded mouth open wide moaning gasping flushed cheeks \"Mhmmm yes pump it harder!\" expression, natural heavy breasts jiggling bouncing swaying rhythmically with each thrust, subtle body rocking forward-backward muscle tension sweat beads running down back and breasts, warm dim bedroom lighting soft shadows volumetric glow white sheets rumpled bed side table unchanged exact background from reference image, fixed static side-angle camera viewpoint full body and face composition showing deep vaginal insertion cock in pussy gripping stretching details hands on hips breasts jiggle skin clapping motion, ultra detailed realistic anatomy skin friction stretching fluids high viscosity drops pores sweat strands subsurface scattering, masterpiece photorealistic 8k, smooth fluid coherent motion deliberate natural thrusting pace building intensity high frame consistency temporal stability no sudden changes no frantic speed perfect gradual transitions no jerks",
+          "clip": [
+            "84",
+            0
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIP Text Encode (Positive Prompt)"
+        }
+      },
+      "94": {
+        "inputs": {
+          "value": 16,
+          "images": [
+            "87",
+            0
+          ]
+        },
+        "class_type": "CreateVideo",
+        "_meta": {
+          "title": "CreateVideo"
+        }
+      },
+      "97": {
+        "inputs": {
+          "image": "image1.jpg"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+          "title": "LoadImage"
+        }
+      },
+      "98": {
+        "inputs": {
+          "value": 320,
+          "positive": [
+            "93",
+            0
+          ],
+          "negative": [
+            "89",
+            0
+          ],
+          "vae": [
+            "90",
+            0
+          ],
+          "start_image": [
+            "97",
+            0
+          ]
+        },
+        "class_type": "WanImageToVideo",
+        "_meta": {
+          "title": "WanImageToVideo"
+        }
+      },
+      "101": {
+        "inputs": {
+          "filename": "DR34ML4Y_I2V_14B_HIGH.safetensors",
+          "model": [
+            "117",
+            0
+          ]
+        },
+        "class_type": "LoraLoaderModelOnly",
+        "_meta": {
+          "title": "LoraLoaderModelOnly"
+        }
+      },
+      "102": {
+        "inputs": {
+          "filename": "DR34ML4Y_I2V_14B_LOW.safetensors",
+          "model": [
+            "118",
+            0
+          ]
+        },
+        "class_type": "LoraLoaderModelOnly",
+        "_meta": {
+          "title": "LoraLoaderModelOnly"
+        }
+      },
+      "103": {
+        "inputs": {
+          "value": 4.5,
+          "model": [
+            "102",
+            0
+          ]
+        },
+        "class_type": "ModelSamplingSD3",
+        "_meta": {
+          "title": "ModelSamplingSD3"
+        }
+      },
+      "104": {
+        "inputs": {
+          "value": 4.5,
+          "model": [
+            "101",
+            0
+          ]
+        },
+        "class_type": "ModelSamplingSD3",
+        "_meta": {
+          "title": "ModelSamplingSD3"
+        }
+      },
+      "108": {
+        "inputs": {
+          "filename": "video/ComfyUI",
+          "video": [
+            "94",
+            0
+          ]
+        },
+        "class_type": "SaveVideo",
+        "_meta": {
+          "title": "SaveVideo"
+        }
+      },
+      "117": {
+        "inputs": {
+          "filename": "wan22EnhancedNSFWSVICamera_nsfwV2Q8High.gguf"
+        },
+        "class_type": "UnetLoaderGGUF",
+        "_meta": {
+          "title": "UnetLoaderGGUF"
+        }
+      },
+      "118": {
+        "inputs": {
+          "filename": "wan22EnhancedNSFWSVICamera_nsfwV2Q8Low.gguf"
+        },
+        "class_type": "UnetLoaderGGUF",
+        "_meta": {
+          "title": "UnetLoaderGGUF"
+        }
+      }
+    }
+  }
+}
